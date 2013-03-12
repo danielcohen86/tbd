@@ -1,4 +1,13 @@
 Tbd::Application.routes.draw do
+  resources :votes
+
+
+  resources :options
+
+
+  resources :projects
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
