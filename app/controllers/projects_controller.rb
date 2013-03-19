@@ -2,13 +2,17 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-   @projects = Project.all
-
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @projects = @user.projects.includes(:options)
+    else
+      @projects = Project.includes(:options).all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
-    end
   end
+end
 
   # GET /projects/1
   # GET /projects/1.json
@@ -80,4 +84,11 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def mine
+    @user = current_user
+    @projects = @user.projects.includes(:options)
+    render :index
+  end
+
 end

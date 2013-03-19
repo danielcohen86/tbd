@@ -15,6 +15,17 @@
   <%= @project.description %>
 </p>
 
+ <div class="field">
+    <ul>
+      <%= render @project.options %>
+      <li><%= render 'options/form',
+                     option: @project.options.build,
+                     project: @project %>
+      </li>
+   </ul>
+  </div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Edit', edit_project_path(@project) %>
+<%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Home', projects_path %>
+

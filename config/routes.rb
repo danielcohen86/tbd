@@ -1,15 +1,22 @@
 Tbd::Application.routes.draw do
   devise_for :users
 
-  resources :votes
+  resources :projects do
+    collection do
+      get :mine, as: :my
+    end
+    resources :options
+  end
 
+  resources :users do
+    resources :projects
+  end
 
   resources :options
 
+  resources :votes
 
-  resources :projects
-
-  root to: 'projects#index'
+  root to: 'projects#mine'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
