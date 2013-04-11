@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318231506) do
+ActiveRecord::Schema.define(:version => 20130319192806) do
 
   create_table "options", :force => true do |t|
     t.string   "description"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130318231506) do
     t.integer  "option_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "updown"
   end
 
   add_index "votes", ["option_id"], :name => "index_votes_on_option_id"
