@@ -11,15 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412002622) do
+ActiveRecord::Schema.define(:version => 20130412010858) do
 
   create_table "options", :force => true do |t|
     t.string   "description"
     t.integer  "project_id"
     t.text     "photo_url"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "score",       :default => 0
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "score",              :default => 0
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "options", ["project_id"], :name => "index_options_on_project_id"

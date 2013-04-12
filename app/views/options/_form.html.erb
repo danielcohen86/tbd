@@ -1,4 +1,5 @@
-<%= form_for [project, option] do |f| %>
+<%= form_for [project, option], html: {multipart: true} do |f| %>
+  <%= f.file_field :image %>
   <%= f.text_field :description, placeholder: 'Add an option...' %>
   <%= f.submit %>
 <% end %>
