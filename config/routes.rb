@@ -5,7 +5,9 @@ Tbd::Application.routes.draw do
     collection do
       get :mine, as: :my
     end
-    resources :options
+    resources :options do
+      resources :votes, only: [:create]
+    end
   end
 
   resources :users do

@@ -16,7 +16,7 @@
 
  <div class="field">
     <ul>
-      <%= render @project.options %>
+      <%= render @project.options.order("score desc") %>
       <li><%= render 'options/form',
                      option: @project.options.build,
                      project: @project %>
