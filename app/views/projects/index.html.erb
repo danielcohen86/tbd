@@ -1,5 +1,6 @@
 <table class="table">
   <tr>
+    <th></th>
     <th>Project</th>
     <th>User</th>
     <th>Description</th>
@@ -11,10 +12,16 @@
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.title %></td>
+    <td>
+    <div class="media">
+        <a class="pull-left">
+        <img class="media-object" data-src="holder.js/64x64">
+        <%= project.options.first %>
+        </a>
+    </td>
+    <td><%= link_to project.title, project %></td>
     <td><%= project.user.email %></td>
     <td><%= project.description %></td>
-    <td><%= link_to 'Show', project %></td>
   </tr>
 <% end %>
 </table>

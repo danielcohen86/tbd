@@ -6,7 +6,9 @@ gem 'devise'
 
 gem 'bootstrap-sass'
 
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip"
+
+gem "aws-sdk"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
