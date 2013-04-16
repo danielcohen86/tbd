@@ -15,8 +15,7 @@
     <td>
     <div class="media">
         <a class="pull-left">
-        <img class="media-object" data-src="holder.js/64x64">
-        <%= project.options.first %>
+          <img class="media-object" src="<%= project.options.order('random ()').first.image.url(:small) %>">
         </a>
     </td>
     <td><%= link_to project.title, project %></td>
@@ -26,6 +25,6 @@
 <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Project', new_project_path, class: "btn" %>

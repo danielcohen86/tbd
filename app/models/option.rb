@@ -9,7 +9,8 @@ class Option < ActiveRecord::Base
 
   has_attached_file :image,
   	styles: {
-  		thumb:'260x180#'
+  		thumb:'260x180#',
+      small: '130x90#'
   	},
     s3_credentials: {
     access_key_id: 'AKIAJNUSQQMYYELN5VZQ',

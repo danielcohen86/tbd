@@ -33,6 +33,14 @@
     <%end %>
       </li>
     </ul>
+
+    <ul class="nav pull-right">
+      <li>
+    <%= search_form_for q, html: {class: "navbar-search"} do |f| %>
+        <%= f.text_field :title_cont, class: "search-query", placeholder: "Search projects" %>
+    <% end %>
+  </li>
+    </ul>
   </div>
 </div>
 

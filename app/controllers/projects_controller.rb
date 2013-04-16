@@ -8,6 +8,10 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.includes(:options).all
     end
+    
+    @q = Project.search(params[:q])
+    @projects = @q.result(:distinct => true)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }

@@ -3,6 +3,7 @@ class VotesController < ApplicationController
   def create
     option = Option.find(params[:option_id])
     @vote = option.votes.build
+    @vote.user = current_user
 
     if params[:vote] == 'up'
       @vote.updown = 1

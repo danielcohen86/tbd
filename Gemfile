@@ -10,6 +10,8 @@ gem "paperclip"
 
 gem "aws-sdk"
 
+gem "ransack"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

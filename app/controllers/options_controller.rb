@@ -17,9 +17,13 @@ class OptionsController < ApplicationController
   end
 
    def destroy
-    @option = Option.find(params[:id])
-    @option.destroy
-    redirect_to project_path(@option.project)
-  end
+    if @option.project.user == current_user  
+       @option = Option.find(params[:id])
+       @option.destroy
+       redirect_to project_path(@option.project)
+    else
+       raise "Someone other than the project owner tried to delete the project"
+   end
+end
 
 end

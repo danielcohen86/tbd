@@ -15,7 +15,11 @@
 </p>
 
 <ul class="thumbnails">
-      <%= render @project.options.order("score desc") %>
+	  <% if @project.user == current_user %>
+      	<%= render @project.options.order('score desc') %>
+      <% else %>
+      	<%= render @project.options.order('description asc') %>
+      <% end %>	
 </ul>
 
 <p>
