@@ -8,7 +8,7 @@
   <b>Description:</b>
   <%= @project.description %>
   <% if @project.user != current_user && @project.voting_closed?(current_user) == false %>
-    <%= link_to "See results", project_vote_statuses_path(@project),class: "btn pull-right", method: :create, data: { confirm: "Are you sure? You won't be able to change your votes."  } %>
+    <%= link_to "See results", project_vote_statuses_path(@project),class: "btn btn-inverse pull-right", method: :create, data: { confirm: "Are you sure? You won't be able to change your votes."  } %>
   <% end %>
 </p>
 

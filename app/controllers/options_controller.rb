@@ -12,7 +12,7 @@ class OptionsController < ApplicationController
     if @option.save
       redirect_to user_project_path(project.user, project)
     else
-      render 'new'
+      redirect_to project_path(@option.project)
     end
   end
 
