@@ -17,6 +17,7 @@ class OptionsController < ApplicationController
   end
 
    def destroy
+    @option = Option.find(params[:id])
     if @option.project.user == current_user  
        @option = Option.find(params[:id])
        @option.destroy

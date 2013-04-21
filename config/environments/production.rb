@@ -20,6 +20,14 @@ Tbd::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.paperclip_defaults = {
+     s3_credentials: {
+      access_key_id: 'AKIAJNUSQQMYYELN5VZQ',
+      secret_access_key: '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',
+      bucket: 'hackeryou'
+    }
+  }
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

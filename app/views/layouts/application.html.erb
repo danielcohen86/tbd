@@ -9,20 +9,24 @@
 <body>
 
  <div class="container">
-
-<div class="page-header">
-<h1>Rise.up <small>Hot or not, for absolutely everything</small></h1>
-</div>
-
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
-    <ul class="nav">
+     <ul class="nav">
+      <li>
+  <%= link_to "POWER MOVES", projects_path, class: "title" %>
+   </li>
+      <li class="divider-vertical"></li>
       <li>
           <%= link_to "Home", projects_path %>
       <li>
       <li class="divider-vertical"></li>
       <li>
           <%= link_to "My Projects", my_projects_path %>
+      </li>
+      <li>
+      <li class="divider-vertical"></li>
+      <li>
+          <%= link_to "New Project", new_project_path %>
       </li>
       <li class="divider-vertical"></li>
       <li>

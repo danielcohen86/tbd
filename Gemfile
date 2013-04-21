@@ -17,6 +17,7 @@ gem "ransack"
 
 gem 'sqlite3'
 
+gem 'pry'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  done: false
+  user: 
+  project: 
+
+two:
+  done: false
+  user: 
+  project: 

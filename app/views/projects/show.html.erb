@@ -7,6 +7,9 @@
 <p>
   <b>Description:</b>
   <%= @project.description %>
+  <% unless @project.voting_closed? current_user %>
+    <%= link_to "I'm done voting!", project_vote_statuses_path(@project),class: "btn pull-right", method: :create %>
+  <% end %>
 </p>
 
 <p>
@@ -15,17 +18,19 @@
 </p>
 
 <ul class="thumbnails">
-	  <% if @project.user == current_user %>
-      	<%= render @project.options.order('score desc') %>
+    <% if @project.user == current_user || @project.voting_closed?(current_user)  %>
+        <%= render @project.options.order('score desc') %>
       <% else %>
-      	<%= render @project.options.order('description asc') %>
-      <% end %>	
+        <%= render @project.options.order('description asc') %>
+      <% end %> 
 </ul>
 
 <p>
+<% if @project.user == current_user || @project.allow == true %>
 <%= render 'options/form',
     option: @project.options.build,
     project: @project %>
+<% end %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %>

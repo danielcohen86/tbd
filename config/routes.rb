@@ -1,10 +1,13 @@
 Tbd::Application.routes.draw do
+  get "vote_statuses/create"
+
   devise_for :users
 
   resources :projects do
     collection do
       get :mine, as: :my
     end
+    resources :vote_statuses, only: [:create]
     resources :options do
       resources :votes, only: [:create]
     end
