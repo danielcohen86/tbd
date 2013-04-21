@@ -1,20 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <H2> <%= @project.title %></H2>
+  <H2><b>Power Move:</b> <%= @project.title %></H2>
 </p>
 
 <p>
   <b>Description:</b>
   <%= @project.description %>
-  <% unless @project.voting_closed? current_user %>
-    <%= link_to "I'm done voting!", project_vote_statuses_path(@project),class: "btn pull-right", method: :create %>
+  <% if @project.user != current_user && @project.voting_closed?(current_user) == false %>
+    <%= link_to "See results", project_vote_statuses_path(@project),class: "btn pull-right", method: :create, data: { confirm: "Are you sure? You won't be able to change your votes."  } %>
   <% end %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @project.user.email %>
 </p>
 
 <ul class="thumbnails">
@@ -33,7 +28,9 @@
 <% end %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %>
-<%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if @project.user == current_user %>
+  <%= link_to 'Edit', edit_project_path(@project) %>
+  <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 <%= link_to 'Home', projects_path %>
 
