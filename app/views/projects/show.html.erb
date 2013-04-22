@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <H2><b>Power Move:</b> <%= @project.title %></H2>
+  <span class="header"><b>Power Move:</b> <%= @project.title %></span>
+  <% if @project.user == current_user %>
+      <%= link_to "View results", project_vote_statuses_path(@project),class: "btn btn-primary pull-right btn-space", method: :create %>
+  <% elsif @project.voting_closed?(current_user) == false %>
+    <%= link_to "View results", project_vote_statuses_path(@project),class: "btn btn-primary pull-right btn-space", method: :create, data: { confirm: "Are you sure? You won't be able to change your votes."  } %>
+  <% end %>
 </p>
 
 <p>
   <b>Description:</b>
   <%= @project.description %>
-  <% if @project.user != current_user && @project.voting_closed?(current_user) == false %>
-    <%= link_to "See results", project_vote_statuses_path(@project),class: "btn btn-inverse pull-right", method: :create, data: { confirm: "Are you sure? You won't be able to change your votes."  } %>
-  <% end %>
 </p>
 
 <ul class="thumbnails">
-    <% if @project.user == current_user || @project.voting_closed?(current_user)  %>
+    <% if @project.voting_closed?(current_user)  %>
         <%= render @project.options.order('score desc') %>
       <% else %>
         <%= render @project.options.order('photo_url asc') %>

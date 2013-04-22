@@ -3,7 +3,7 @@
 <h3> <%= option.description %> </h3>
 <p>
 
-<% if option.project.user == current_user %>
+<% if option.project.user == current_user && option.project.voting_closed?(current_user) %>
   <span class="score bold"> Score: <%= option.score %></span>
   <%= link_to 'Delete option', option,:style =>'color: #0099dd', method: :delete, data: { confirm: 'Are you sure you want to delete this image?' } %>
 <% elsif option.project.voting_closed?(current_user) %>
@@ -16,7 +16,7 @@
      not_class = 'active' if my_vote == -1
   %>
 
-<% if not option.project.voting_closed?(current_user) %>
+<% if option.project.voting_closed?(current_user) == false || option.project.user == current_user %>
 <div class="btn-group">
   <%= link_to 'Hot', project_option_votes_path(option.project, option, vote: 'up'), class: "btn #{hot_class}", :style =>'color: #0099dd', method: :post %>
   <%= link_to 'Not', project_option_votes_path(option.project, option, vote: 'down'), class: "btn #{not_class}", :style =>'color: #0099dd', method: :post %>
