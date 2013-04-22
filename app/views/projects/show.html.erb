@@ -15,10 +15,10 @@
 </p>
 
 <ul class="thumbnails">
-    <% if @project.voting_closed?(current_user)  %>
-        <%= render @project.options.order('score desc') %>
+    <% if @project.voting_closed?(current_user) == false  %>
+        <%= render @project.options.order('image_file_name asc') %>
       <% else %>
-        <%= render @project.options.order('photo_url asc') %>
+        <%= render @project.options.order('score desc') %>
       <% end %> 
 </ul>
 
