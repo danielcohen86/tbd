@@ -10,6 +10,10 @@
   <span class="score bold"> Score: <%= option.score %></span>
 <% end %>
 
+<% if option.project.user == current_user %>
+  <%= link_to 'Delete option', option,:style =>'color: #0099dd', method: :delete, data: { confirm: 'Are you sure you want to delete this image?' } %>
+<% end %>
+
   <% 
      my_vote = current_user.votes.where(option_id: option.id).order('created_at').last.try(:updown)
      hot_class = 'active' if my_vote == 1
