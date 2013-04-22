@@ -20,7 +20,9 @@ Tbd::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.paperclip_defaults = {
+
+config.paperclip_defaults = {
+  :storage => :s3,
      s3_credentials: {
       access_key_id: 'AKIAJNUSQQMYYELN5VZQ',
       secret_access_key: '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',
